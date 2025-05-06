@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-05-06T11:11:53.461Z",
+    "end": "2025-05-06T11:11:53.646Z",
+    "duration": 185,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2174fdb8-3e1e-4018-bd91-a5c6d47c4af4",
+      "title": "",
+      "fullFile": "cypress/e2e/Env.cy.js",
+      "file": "cypress/e2e/Env.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3ee0f344-13e4-48f3-a621-1033d59f3c8d",
+          "title": "Garage and Expenses Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Add car and fuel expense",
+              "fullTitle": "Garage and Expenses Tests Add car and fuel expense",
+              "timedOut": null,
+              "duration": 167,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_garagePage.garagePage.addCar('Audi', 'A6', '10000');\n_expensesPage.expensesPage.addFuelExpense('50', '75');",
+              "err": {
+                "message": "CypressError: `cy.visit()` failed trying to load:\n\n/\n\nWe failed looking for this file at the path:\n\n/Users/lenataranushchenko/Auto/Cypress/\n\nThe internal Cypress web server responded with:\n\n  > 404: Not Found\n\nBecause this error occurred during a `before all` hook we are skipping the remaining tests in the current suite: `Garage and Expenses Tests`",
+                "estack": "CypressError: `cy.visit()` failed trying to load:\n\n/\n\nWe failed looking for this file at the path:\n\n/Users/lenataranushchenko/Auto/Cypress/\n\nThe internal Cypress web server responded with:\n\n  > 404: Not Found\n\nBecause this error occurred during a `before all` hook we are skipping the remaining tests in the current suite: `Garage and Expenses Tests`\n    at <unknown> (http://localhost:54832/__cypress/runner/cypress_runner.js:133695:76)\n    at visitFailedByErr (http://localhost:54832/__cypress/runner/cypress_runner.js:133101:12)\n    at <unknown> (http://localhost:54832/__cypress/runner/cypress_runner.js:133678:13)\n    at tryCatcher (http://localhost:54832/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:54832/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:54832/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:54832/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:54832/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:54832/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:54832/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:54832/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:54832/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/Env.cy.js:5:7)",
+                "diff": null
+              },
+              "uuid": "97697af1-f15d-4a2f-8aad-16ac15f96075",
+              "parentUUID": "3ee0f344-13e4-48f3-a621-1033d59f3c8d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "97697af1-f15d-4a2f-8aad-16ac15f96075"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 167,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

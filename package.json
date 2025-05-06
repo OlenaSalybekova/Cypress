@@ -1,5 +1,12 @@
 {
   "devDependencies": {
-    "cypress": "^14.3.0"
+    "cypress": "^14.3.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^5.0.0",
+    "mochawesome-report-generator": "^6.2.0"
+  },
+  "scripts": {
+    "test:qa1": "cypress run --config-file cypress/config/qa1.config.js",
+    "test:qa2": "cypress run --config-file cypress/config/qa2.config.js"
   }
 }
