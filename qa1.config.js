@@ -5,6 +5,9 @@ module.exports = defineConfig({
     env: {
       userEmail: 'user1@mail.com',
       userPassword: 'Password1'
-    }
+    },
+    setupNodeEvents (on, config) {
+      return config
+    },
   }
 });
