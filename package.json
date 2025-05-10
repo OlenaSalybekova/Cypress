@@ -6,7 +6,8 @@
     "mochawesome-report-generator": "^6.2.0"
   },
   "scripts": {
-    "test:qa1": "cypress run --config-file cypress/config/qa1.config.js",
-    "test:qa2": "cypress run --config-file cypress/config/qa2.config.js"
+    "test:qa1": "cypress run --e2e --config-file=cypress/qa1.config.js",
+    "test:qa2": "cypress run --e2e --config-file=cypress/qa2.config.js",
+    "test:headless": "cypress run --e2e --browser chrome"
   }
 }

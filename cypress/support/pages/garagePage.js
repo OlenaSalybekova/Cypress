@@ -1,3 +1,4 @@
+
 class GaragePage {
     addCar(brand, model, mileage) {
       cy.get('.panel-page_heading > .btn').click();
@@ -8,3 +9,4 @@ class GaragePage {
     }
   }
   export const garagePage = new GaragePage();
+
