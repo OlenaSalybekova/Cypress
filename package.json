@@ -11,3 +11,4 @@
     "test:headless": "cypress run --e2e --browser chrome"
   }
 }
+
