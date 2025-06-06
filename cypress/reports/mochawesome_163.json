@@ -1,0 +1,167 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-06T14:51:21.509Z",
+    "end": "2025-06-06T14:51:21.681Z",
+    "duration": 172,
+    "testsRegistered": 4,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 3,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "5eeef8a3-7988-4489-bd5d-d72c70f6102f",
+      "title": "",
+      "fullFile": "cypress/e2e/garage.cy.js",
+      "file": "cypress/e2e/garage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "be5aee8f-f5f0-4412-a2d5-35e3c05957e8",
+          "title": "Garage and Expenses Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Add car and validate by interception",
+              "fullTitle": "Garage and Expenses Tests Add car and validate by interception",
+              "timedOut": null,
+              "duration": 153,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('POST', '**/api/cars').as('createCar');\n_garagePage.garagePage.addCar('Audi', 'A6', '10000');\ncy.wait('@createCar').then(interception => {\n  expect(interception.response.statusCode).to.eq(201);\n  createdCarId = interception.response.body.id;\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` must be provided a fully qualified `url` - one that begins with `http`. By default `cy.request()` will use either the current window's origin or the `baseUrl` in `cypress.config.js`. Neither of those values were present.\n\nhttps://on.cypress.io/request\n\nBecause this error occurred during a `before all` hook we are skipping the remaining tests in the current suite: `Garage and Expenses Tests`",
+                "estack": "CypressError: `cy.request()` must be provided a fully qualified `url` - one that begins with `http`. By default `cy.request()` will use either the current window's origin or the `baseUrl` in `cypress.config.js`. Neither of those values were present.\n\nhttps://on.cypress.io/request\n\nBecause this error occurred during a `before all` hook we are skipping the remaining tests in the current suite: `Garage and Expenses Tests`\nat request (http://localhost:51643/__cypress/runner/cypress_runner.js:134795:70)\nat __webpack_modules__</addCommand/wrap (http://localhost:51643/__cypress/runner/cypress_runner.js:140150:43)\nFrom Your Spec Code:\n    at ./cypress/support/commands.js (webpack:///./cypress/support/commands.js:14:13)\n    at __webpack_modules__</addCommand/wrap (http://localhost:51643/__cypress/runner/cypress_runner.js:140150:43)",
+                "diff": null
+              },
+              "uuid": "2c3124fb-987d-4ff1-8e6e-47bf26c1bed0",
+              "parentUUID": "be5aee8f-f5f0-4412-a2d5-35e3c05957e8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate car from API by ID",
+              "fullTitle": "Garage and Expenses Tests Validate car from API by ID",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: '/api/cars',\n  headers: {\n    authorization: `Bearer ${Cypress.env('accessToken')}`\n  }\n}).then(res => {\n  expect(res.status).to.eq(200);\n  const car = res.body.cars.find(c => c.id === createdCarId);\n  expect(car).to.exist;\n  expect(car.brand).to.eq('Audi');\n  expect(car.model).to.eq('A6');\n});",
+              "err": {},
+              "uuid": "6e058643-4b1c-4da6-82d0-9c5f9d317cf4",
+              "parentUUID": "be5aee8f-f5f0-4412-a2d5-35e3c05957e8",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Create expense via API and validate response",
+              "fullTitle": "Garage and Expenses Tests Create expense via API and validate response",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const today = new Date().toISOString().split('T')[0];\ncy.request({\n  method: 'POST',\n  url: '/api/expenses',\n  headers: {\n    authorization: `Bearer ${Cypress.env('accessToken')}`\n  },\n  body: {\n    carId: createdCarId,\n    type: 'FUEL',\n    amount: 50,\n    date: today\n  }\n}).then(res => {\n  expect(res.status).to.eq(201);\n  expect(res.body.amount).to.eq(50);\n});",
+              "err": {},
+              "uuid": "8c8e535f-4eb7-478c-94a5-18a09b735c19",
+              "parentUUID": "be5aee8f-f5f0-4412-a2d5-35e3c05957e8",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Validate expense via UI",
+              "fullTitle": "Garage and Expenses Tests Validate expense via UI",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/');\ncy.contains('Audi A6').click();\ncy.contains('10000 km').should('exist');\ncy.contains('50').should('exist');",
+              "err": {},
+              "uuid": "39fc007f-e4ca-4779-8750-cc20e25a1936",
+              "parentUUID": "be5aee8f-f5f0-4412-a2d5-35e3c05957e8",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "2c3124fb-987d-4ff1-8e6e-47bf26c1bed0"
+          ],
+          "pending": [],
+          "skipped": [
+            "6e058643-4b1c-4da6-82d0-9c5f9d317cf4",
+            "8c8e535f-4eb7-478c-94a5-18a09b735c19",
+            "39fc007f-e4ca-4779-8750-cc20e25a1936"
+          ],
+          "duration": 153,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
