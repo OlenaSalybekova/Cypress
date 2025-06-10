@@ -1,19 +1,24 @@
 name: Cypress Tests in Docker
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    
     container:
       image: cypress/browsers:node-20.9.0-chrome-118.0.5993.88-1-ff-118.0.2-edge-118.0.2088.46-1
-    steps:
-name: Checkout code
-        uses: actions/checkout@v4
+    steps: 
+    - name: Checkout code 
+      uses: actions/checkout@v4
+      
+    - name: Install dependencies 
+      run: npm ci
 
-name: Install dependencies
-        run: npm ci
+    - name: Verify Cypress installation
+      run: npx cypress verify
 
-name: Verify Cypress is installed
-        run: npx cypress verify
-
-name: Run Cypress tests
-        run: npx cypress run
+    - name: Run Cypress tests
+      run: npx cypress run
