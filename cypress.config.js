@@ -10,12 +10,13 @@ module.exports = defineConfig({
   json: true
 },
   e2e: {
-    setupNodeEvents(on, config) {
-    baseUrl: 'https://qauto.forstudy.space',
+      baseUrl: 'https://qauto.forstudy.space',
     env: {
       userEmail: 'your@email.com',
       userPassword: 'yourPassword123'
     },
+    setupNodeEvents(on, config) {
+      return config
     },
   },
 });
